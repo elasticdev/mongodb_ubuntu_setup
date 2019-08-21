@@ -14,6 +14,7 @@ while [[ RET -ne 0 ]]; do
 done
 
 echo 'rs.initiate()' | mongo admin --sslAllowInvalidCertificates --ssl
+sleep 10
 
 echo "=> Creating an admin user with a ${MONGODB_PASS} password in MongoDB"
 
