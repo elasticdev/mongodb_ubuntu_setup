@@ -18,8 +18,8 @@ sleep 10
 
 echo "=> Creating an admin user with a ${MONGODB_PASS} password in MongoDB"
 
-#mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: '$MONGODB_PASS', roles:[{role:'root',db:'admin'}]});"
-mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: 'admin', roles:[{role:'root',db:'admin'}]});"
+mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: '$MONGODB_PASS', roles:[{role:'root',db:'admin'}]});"
+#mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: 'admin', roles:[{role:'root',db:'admin'}]});"
 
 echo "========================================================================"
 echo "You can now connect to this MongoDB server using:"
