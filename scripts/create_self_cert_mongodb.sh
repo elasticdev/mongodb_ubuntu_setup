@@ -7,5 +7,5 @@ bash -c 'cat mongodb.crt mongodb.key > /etc/ssl/mongodb.pem'
 
 pwd
 
-cp -rp mongod.conf /etc/mongodb.conf
+cp -rp mongod.conf /etc/mongod.conf
 service mongod restart
