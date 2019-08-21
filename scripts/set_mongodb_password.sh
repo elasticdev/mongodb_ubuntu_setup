@@ -1,9 +1,8 @@
 #!/bin/bash
 
-export DATA_DIR=/data/db
 export MONGODB_USER=admin
 
-export MONGODB_PASS=${MONGODB_PASS:-$(pwgen -s 32 1)}
+export MONGODB_PASS=${MONGODB_PASS:-$(pwgen -s 48 1)}
 
 RET=1
 while [[ RET -ne 0 ]]; do
@@ -13,8 +12,11 @@ while [[ RET -ne 0 ]]; do
     RET=$?
 done
 
+sleep 15
+
 echo 'rs.initiate()' | mongo admin --sslAllowInvalidCertificates --ssl
-sleep 10
+
+sleep 30
 
 echo "=> Creating an admin user with a ${MONGODB_PASS} password in MongoDB"
 
