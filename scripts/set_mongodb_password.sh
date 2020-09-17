@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export MONGODB_USER=admin
-
 export MONGODB_PASS=${MONGODB_PASS:-$(pwgen -s 48 1)}
 
 RET=1
@@ -13,15 +12,11 @@ while [[ RET -ne 0 ]]; do
 done
 
 sleep 15
-
 echo 'rs.initiate()' | mongo admin --sslAllowInvalidCertificates --ssl
-
 sleep 30
-
 echo "=> Creating an admin user with a ${MONGODB_PASS} password in MongoDB"
 
 mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: '$MONGODB_PASS', roles:[{role:'root',db:'admin'}]});"
-#mongo admin --ssl --sslAllowInvalidCertificates --eval "db.createUser({user: 'admin', pwd: 'admin', roles:[{role:'root',db:'admin'}]});"
 
 echo "========================================================================"
 echo "You can now connect to this MongoDB server using:"
